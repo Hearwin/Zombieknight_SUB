@@ -30,14 +30,14 @@ class Ruby(pygame.sprite.Sprite):
         self.current_sprites = 0
         self.image =  self.ruby_sprites[self.current_sprites]
         self.rect = self.image.get_rect()
-        self.rect.bottom_left = (window_width //2, 100)
+        self.rect.bottomleft = (window_width //2, 100)
 
         # Attach sprite groups
         self.platform_group = platform_group
         self.portal_group = portal_group
 
         # Load sounds
-        self.portal_sound = pygame.mixer.sound("assets/sounds/portal_sound.wav")
+        self.portal_sound = pygame.mixer.Sound("assets/sounds/portal_sound.wav")
 
         # Kinematic vectors
         self.position = pygame.math.Vector2(self.rect.x, self.rect.y)
@@ -93,7 +93,7 @@ class Ruby(pygame.sprite.Sprite):
 
     def animate(self, sprite_list, speed):
         """Animate the ruby"""
-        if self.current_sprites > len(sprite_list) - 1:
+        if self.current_sprites < len(sprite_list) - 1:
             self.current_sprites += speed
         else:
             self.current_sprites = 0
